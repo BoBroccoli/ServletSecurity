@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	<servlet>
+		<servlet-name>Chapter1 servlet</servlet-name>
+		<servlet-class>Cha1Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Chapter1 servlet</servlet-name>
+		<url-pattern>/Beer/AddRecipe/Add</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>a b c</servlet-name>
+		<servlet-class>abc</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>a b c</servlet-name>
+		<url-pattern>/abc.do</url-pattern>
+	</servlet-mapping>
+	<security-role><role-name>Admin</role-name></security-role>
+	<security-role><role-name>Member</role-name></security-role>
+	<security-role><role-name>Guest</role-name></security-role>
+	
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>UpdateRecipes</web-resource-name>
+			
+			<url-pattern>/Beer/AddRecipe/*</url-pattern>
+			<url-pattern>/Beer/ReviewRecipe/*</url-pattern>
+			
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		
+		<auth-constraint>
+			<role-name>Admin</role-name>
+			<role-name>Member</role-name>
+		</auth-constraint>
+	</security-constraint>
+</web-app> 
